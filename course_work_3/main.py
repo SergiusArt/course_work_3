@@ -21,7 +21,6 @@ def main():
 
     # Загружаем данные из файла в словарь
     all_data_list = json_to_list(OPERATIONS)
-    #print(all_data_dict)
 
     # Удаляем пустые операции
     all_data_list = del_empty(all_data_list)
@@ -30,7 +29,8 @@ def main():
     five_operations = split_dict(all_data_list, 5)
 
     # Выводим данные в нужном формате
-    output_format(five_operations)
+    print((output_format(five_operations)))
+
 
 if __name__ == '__main__':
     main()

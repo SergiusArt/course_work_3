@@ -27,6 +27,7 @@ def del_empty(list_load):
 
     return new_list
 
+
 def split_dict(data_list, number):
     """
     Формируем новый словарь по последним значениям из загруженного
@@ -38,10 +39,11 @@ def split_dict(data_list, number):
     new_list = []
     sort_list = sorted(data_list, key=lambda x: datetime.strptime(x["date"], '%Y-%m-%dT%H:%M:%S.%f'), reverse=True)
 
-    for i in range(number-1):
+    for i in range(number):
         new_list.append(sort_list[i])
 
     return new_list
+
 
 def output_format(operations):
     """
@@ -49,6 +51,7 @@ def output_format(operations):
     :param operations: список операций
     """
 
+    new_str_list = []
 
     for operation in operations:
 
@@ -84,11 +87,10 @@ def output_format(operations):
         if not "to" in operation:
             operation["to"] = '[отсутствуют данные]'
 
-
         date_obj = datetime.strptime(operation["date"], "%Y-%m-%dT%H:%M:%S.%f")
         from_count = ""
 
-
+        # Если данные "from" в наличии, то форматируем их, иначе пишем, что отсутствуют данные
         if operation["from"] != '[отсутствуют данные]':
 
             for i in reversed(range(len(operation["from"]))):
@@ -103,13 +105,20 @@ def output_format(operations):
             from_card = '[отсутствуют данные]'
             from_count = '[отсутствуют данные]'
 
+        # Если данные "to" в наличии, то форматируем их, иначе пишем, что отсутствуют данные
         if operation['to'] != '[отсутствуют данные]':
             to_count = '**' + "".join(operation["to"].split(' ')[-1][-4:])
+        else:
+            to_count = '[отсутствуют данные]'
 
         if from_card and from_count == '[отсутствуют данные]':
             from_count = ''
 
-        print(f'{date_obj.strftime("%d.%m.%Y")} {operation["description"]}')
-        print(f'{from_card} {from_count} -> Счет {to_count}')
-        print(f'{operation["operationAmount"]["amount"]} {operation["operationAmount"]["currency"]["name"]}\n')
+        # В остальных случаях, выводим отформатированное сообщение
+        # Если где-то данных нет, то указываем ['отсутствуют данные']
 
+        new_str_list.append(f'{date_obj.strftime("%d.%m.%Y")} {operation["description"]}\n' \
+               f'{from_card} {from_count} -> Счет {to_count}\n' \
+               f'{operation["operationAmount"]["amount"]} {operation["operationAmount"]["currency"]["name"]}\n')
+
+    return '\n'.join(new_str_list)
