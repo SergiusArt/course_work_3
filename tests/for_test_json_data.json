@@ -1,0 +1,45 @@
+[
+  {
+    "id": 114832369,
+    "state": "EXECUTED",
+    "date": "2019-12-07T06:17:14.634890",
+    "operationAmount": {
+      "amount": "48150.39",
+      "currency": {
+        "name": "USD",
+        "code": "USD"
+      }
+    },
+    "description": "Перевод организации",
+    "from": "Visa Classic 2842878893689012",
+    "to": "Счет 35158586384610753655"
+  },
+  {},
+  {
+    "id": 108066781,
+    "state": "EXECUTED",
+    "date": "2019-06-21T12:34:06.351022",
+    "operationAmount": {
+      "amount": "25762.92",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Открытие вклада",
+    "to": "Счет 90817634362091276762"
+  },
+  {
+    "id": 108326781,
+    "state": "EXECUTED",
+    "date": "2019-06-21T12:34:06.351022",
+    "operationAmount": {
+      "amount": "25762.92",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"
+      }
+    },
+    "description": "Открытие вклада"
+  }
+]
